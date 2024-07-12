@@ -64,6 +64,8 @@ const GetThreadHistory = async ({ client, inputs, complete, fail }) => {
     // For each reply, pull out message text, author's name, and datetime
     history.messages = await Promise.all(messages.map(async (reply) => {
       // Use top-level text property, ignore rich text
+      // TODO: if message contains @-mentions, they are currently output as an ID
+      // but it is preferable to use their display name instead.
       const message = reply.text;
 
       // Check if a bot sent the message or a real user

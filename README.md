@@ -10,7 +10,7 @@ The functions are modular! Once the app is installed, any builder with access to
 Fetch all replies from the referenced Slack thread. The timestamp, author, & text of each message are extracted and output via the `replies` property as a stringified array to be used in subsequent steps.
 
 🤖 **Summarize incident with ChatGPT**
-This step expects an array of Slack messages describing an incident and includes several hardcoded system prompts that instruct ChatGPT on how to interpret the inputs and what outputs are expected. ChatGPT returns a JSON object that is parsed and output into individual outputs: summary, cause, impact, resolution, duration, & timeline. Each can be used individually in subsequent workflow steps.
+This step expects an array of Slack messages describing an incident and includes several hardcoded system prompts that instruct ChatGPT on how to interpret the inputs and what outputs are expected. ChatGPT returns a JSON object that is parsed and assigned to individual outputs: `summary`, `cause`, `impact`, `resolution`, `duration`, & `timeline`. Each can be used as individual variables in subsequent workflow steps.
 
 ## Setup
 
@@ -30,6 +30,31 @@ Before getting started, first make sure you have a [development workspace](https
 With your server running, your function is now ready for use in [Workflow Builder](https://slack.com/help/articles/17542172840595-Build-a-workflow--Create-a-workflow-in-Slack)! They will appear in the **Custom** section of the steps list for all users that have been [granted access](https://api.slack.com/automation/functions/custom#access).
 
 ![Example workflow](./assets/example-workflow.png)
+
+## Implementation details
+The `get_thread` function outputs a `replies` JSON string. Here is an example of what you can expect this function to output for a Slack thread with a parent message and two nested replies:
+
+```json
+{
+  "messages": [    
+    {
+      "author": "Adam",
+      "message": "Our payments system stopped working",
+      "datetime": "2024-04-11T22:59:01.000Z"
+    },
+    {
+      "author": "Adam",
+      "message": "10 customers have contacted our support team",
+      "datetime": "2024-04-11T22:59:31.000Z"
+    },
+    {
+      "author": "Jennifer",
+      "message": "Not sure what is wrong, checking logs",
+      "datetime": "2024-04-11T22:59:55.000Z"
+    }
+  ]
+}
+```
 
 ## Project Structure
 
