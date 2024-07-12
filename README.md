@@ -2,7 +2,9 @@
 
 *This app contains a feature that is in Beta! You must use the npm package `"@slack/bolt": "3.17.1-customFunctionBeta.0"`*
 
-This app is built using [Bolt for JavaScript](https://slack.dev/bolt-js) and includes two [custom functions for Bolt](https://api.slack.com/automation/functions/custom-bolt). These functions meant to be deployed on your own infrastructure. This is different from the previously released [workflow apps](https://api.slack.com/automation/functions/custom) built with Deno Slack SDK and hosted on Slack's infrastructure.
+This app is built using [Bolt for JavaScript](https://slack.dev/bolt-js) and includes two [custom functions for Bolt](https://api.slack.com/automation/functions/custom-bolt). These functions are meant to be deployed on your own infrastructure. This is different from the previously released [workflow apps](https://api.slack.com/automation/functions/custom) built with the Deno Slack SDK and are hosted on Slack's infrastructure.
+
+The functions are modular! Once the app is installed, any builder with access to the functions can use them in their own workflows and mix-and-match as needed for their use case.
 
 🧵 **Get all thread replies**
 Fetch all replies from the referenced Slack thread. The timestamp, author, & text of each message are extracted and output via the `replies` property as a stringified array to be used in subsequent steps.
@@ -12,9 +14,11 @@ This step expects an array of Slack messages describing an incident and includes
 
 ## Setup
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy)
+
 Before getting started, first make sure you have a [development workspace](https://api.slack.com/developer-program) where you have permission to install apps. **Please note that the features in this project require that the workspace be part of [a Slack paid plan](https://slack.com/pricing).**
 
-1. Clone this repository to your local development environment.
+1. Clone this repository to your local development environment and run `npm install`.
 2. Create a new app from api.slack.com/apps using the included `manifest.json` file.
 3. Ensure your app has opted into the [Org-wide apps](https://api.slack.com/enterprise/org-wide-apps) feature
 4. Install the app. If you are building in an Enterprise Grid, you [must install at the org-level](https://api.slack.com/automation/functions/custom-bolt#org-wide-apps). If you are building on a standalone workspace, this does not apply.

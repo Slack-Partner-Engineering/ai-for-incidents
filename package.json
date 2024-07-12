@@ -4,7 +4,7 @@
   "engines": {
     "node": "20.x"
   },
-  "description": "Use AI to summarize an incident in Slack and generate helpful details",
+  "description": "Use AI and Slack's workflow builder to review incidents and generate important details for an incident postmortem",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -16,7 +16,8 @@
     "slack",
     "bolt",
     "slackapi",
-    "workflows"
+    "workflows",
+    "functions"
   ],
   "dependencies": {
     "@slack/bolt": "3.17.1-customFunctionBeta.0",

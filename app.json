@@ -1,0 +1,15 @@
+{
+  "name": "AI for Incidents",
+  "description": "Use AI and Slack's workflow builder to review incidents and generate important details for an incident postmortem",
+  "repository": "https://github.com/Slack-Partner-Engineering/ai-for-incidents",
+  "keywords": [
+    "slack",
+    "bolt",
+    "slackapi",
+    "workflows",
+    "functions"
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

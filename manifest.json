@@ -1,6 +1,7 @@
 {
   "display_information": {
-    "name": "AI for Incidents"
+    "name": "AI for Incidents",
+    "description": "Use AI and Slack's workflow builder to review incidents and generate important details for an incident postmortem"
   },
   "features": {
     "bot_user": {
