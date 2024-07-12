@@ -1,0 +1,32 @@
+{
+  "name": "ai-for-incidents",
+  "version": "1.0.0",
+  "engines": {
+    "node": "20.x"
+  },
+  "description": "Use AI to summarize an incident in Slack and generate helpful details",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "eslint --ext .js ."
+  },
+  "author": "Slack Technologies, LLC",
+  "license": "MIT",
+  "keywords": [
+    "slack",
+    "bolt",
+    "slackapi",
+    "workflows"
+  ],
+  "dependencies": {
+    "@slack/bolt": "3.17.1-customFunctionBeta.0",
+    "dotenv": "^16.4.5",
+    "openai": "^4.49.0"
+  },
+  "devDependencies": {
+    "@slack/cli-hooks": "^1.1.0",
+    "eslint": "~8.57.0",
+    "eslint-config-airbnb-base": "~15.0.0",
+    "eslint-plugin-import": "~2.29.1"
+  }
+}

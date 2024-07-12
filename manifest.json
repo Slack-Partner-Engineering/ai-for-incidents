@@ -1,0 +1,110 @@
+{
+  "display_information": {
+    "name": "AI for Incidents"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "ai-for-incidents",
+      "always_online": false
+    }
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "chat:write",
+        "users:read",
+        "channels:history",
+        "groups:history"
+      ]
+    }
+  },
+  "settings": {
+    "interactivity": {
+      "is_enabled": true
+    },
+    "org_deploy_enabled": true,
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false
+  },
+  "functions": {
+    "get_thread": {
+      "title": "Get all thread replies",
+      "description": "Get all messages from a thread and return a JSON string",
+      "input_parameters": {
+        "thread_context": {
+          "type": "slack#/types/message_context",
+          "title": "Select a message",
+          "description": "Any top-level message or message in a thread to be used as the source of the discussion",
+          "is_required": true,
+          "name": "thread_context"
+        }
+      },
+      "output_parameters": {
+        "replies": {
+          "type": "string",
+          "title": "Thread message history",
+          "description": "A collection of replies from the source thread. Formatted as a JSON string with timestamp, author & text properties.",
+          "is_required": true,
+          "name": "replies"
+        }
+      }
+    },
+    "summarize_incident": {
+      "title": "Summarize incident with ChatGPT",
+      "description": "Use ChatGPT to summarize an incident and generate helpful details",
+      "input_parameters": {
+        "context": {
+          "type": "string",
+          "title": "Incident history",
+          "description": "JSON string representing Slack conversation with timestamp, author, & text properties",
+          "is_required": true,
+          "name": "context"
+        }
+      },
+      "output_parameters": {
+        "summary": {
+          "type": "string",
+          "title": "Summary",
+          "description": "",
+          "is_required": true,
+          "name": "summary"
+        },
+        "cause": {
+          "type": "string",
+          "title": "Cause",
+          "description": "",
+          "is_required": true,
+          "name": "cause"
+        },
+        "impact": {
+          "type": "string",
+          "title": "Impact",
+          "description": "",
+          "is_required": true,
+          "name": "impact"
+        },
+        "resolution": {
+          "type": "string",
+          "title": "Resolution",
+          "description": "",
+          "is_required": true,
+          "name": "resolution"
+        },
+        "duration": {
+          "type": "string",
+          "title": "Duration",
+          "description": "",
+          "is_required": true,
+          "name": "duration"
+        },
+        "timeline": {
+          "type": "string",
+          "title": "Timeline",
+          "description": "",
+          "is_required": true,
+          "name": "timeline"
+        }
+      }
+    }
+  }
+}
