@@ -29,6 +29,10 @@ Before getting started, first make sure you have a [development workspace](https
 ## Using Functions in Workflow Builder
 With your server running, your function is now ready for use in [Workflow Builder](https://slack.com/help/articles/17542172840595-Build-a-workflow--Create-a-workflow-in-Slack)! They will appear in the **Custom** section of the steps list for all users that have been [granted access](https://api.slack.com/automation/functions/custom#access).
 
+Download the included [workflow JSON file](./assets/example-incident-summary-workflow.json) to get started rebuilding this workflow in Slack. At this time, [exporting a workflow](https://slack.com/help/articles/30011815092499-Export-and-import-Slack-workflows#export-a-workflow) does not support non built-in steps. This means that the two custom steps in this app won't appear when imported. Add them yourself and made any edits as needed, specifically within the *Create a canvas* step where you will need to update the marked variable references to the outputs of the *Summarize incident with ChatGPT* step.
+
+📥 [Example workflow *(json)*](./assets/example-incident-summary-workflow.json)
+
 ![Example workflow](./assets/example-workflow.png)
 
 ## Implementation details
