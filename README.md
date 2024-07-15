@@ -1,6 +1,16 @@
-# ChatGPT for Incidents
+# AI for Incidents
 
 *This app contains a feature that is in Beta! You must use the npm package `"@slack/bolt": "3.17.1-customFunctionBeta.0"`*
+
+#### Outline
+- [Overview](#overview)
+- [Setup](#setup)
+- [Using functions in Workflow Builder](#using-functions-in-workflow-builder)
+- [Implementation details](#implementation-details)
+- [Project Structure](#project-structure)
+- [Linting](#linting)
+
+## Overview
 
 This app is built using [Bolt for JavaScript](https://slack.dev/bolt-js) and includes two [custom functions for Bolt](https://api.slack.com/automation/functions/custom-bolt). These functions are meant to be deployed on your own infrastructure. This is different from the previously released [workflow apps](https://api.slack.com/automation/functions/custom) built with the Deno Slack SDK and are hosted on Slack's infrastructure.
 
@@ -20,13 +30,13 @@ Before getting started, first make sure you have a [development workspace](https
 
 1. Clone this repository to your local development environment and run `npm install`.
 2. Create a new app from api.slack.com/apps using the included `manifest.json` file.
-3. Ensure your app has opted into the [Org-wide apps](https://api.slack.com/enterprise/org-wide-apps) feature
+3. Ensure your app has opted into the [Org-wide apps](https://api.slack.com/enterprise/org-wide-apps) feature.
 4. Install the app. If you are building in an Enterprise Grid, you [must install at the org-level](https://api.slack.com/automation/functions/custom-bolt#org-wide-apps). If you are building on a standalone workspace, this does not apply.
 5. Create a copy of `.env.sample`, rename to `.env` and provide the required values: an OpenAI API key and two tokens from your newly created app.
-6. Run your app locally or deploy to a hosting platform of your choice such as Heroku.
+6. Run your app locally or deploy to a hosting platform of your choice such as [Heroku](https://slack.dev/bolt-js/deployments/heroku).
 7. Open [Workflow Builder](https://slack.com/help/articles/17542172840595-Build-a-workflow--Create-a-workflow-in-Slack) and create a new workflow that includes one or both of the provided functions. They will appear in the **Custom** section of the steps list for all users that have been [granted access](https://api.slack.com/automation/functions/custom#access).
 
-## Using Functions in Workflow Builder
+## Using functions in Workflow Builder
 With your server running, your function is now ready for use in [Workflow Builder](https://slack.com/help/articles/17542172840595-Build-a-workflow--Create-a-workflow-in-Slack)! They will appear in the **Custom** section of the steps list for all users that have been [granted access](https://api.slack.com/automation/functions/custom#access).
 
 Download the included [workflow JSON file](./assets/example-incident-summary-workflow.json) to get started rebuilding this workflow in Slack. At this time, [exporting a workflow](https://slack.com/help/articles/30011815092499-Export-and-import-Slack-workflows#export-a-workflow) does not support non built-in steps. This means that the two custom steps in this app won't appear when imported. Add them yourself and made any edits as needed, specifically within the *Create a canvas* step where you will need to update the marked variable references to the outputs of the *Summarize incident with ChatGPT* step.
@@ -76,8 +86,7 @@ Contains `apps.dev.json` and `config.json`, which include installation details f
 
 ### `slack.json`
 
-Used by the Slack CLI to interact with the project's SDK dependencies. It contains
-script hooks that are executed by the CLI and implemented by `@slack/cli-hooks`.
+Used by the Slack CLI to interact with the project's SDK dependencies. It contains script hooks that are executed by the CLI and implemented by `@slack/cli-hooks`. You have the option to specify a [deploy hook](https://api.slack.com/automation/functions/custom-bolt#specify) for your app, such that when you run `slack deploy`, your specified instructions will run.
 
 ## Linting
 Run ESLint for code formatting and linting:
