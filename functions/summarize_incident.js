@@ -16,7 +16,7 @@ const SummarizeIncident = async ({ inputs, complete, fail }) => {
         { role: 'system', content: 'The Slack messages describe a single incident or outage that occurred for the software service these individuals manage.' },
         { role: 'system', content: 'The user will provide the Slack message history. It is a JSON object with a messages array containing a timestamp, author\'s name, and the text for each individual message.' },
         { role: 'system', content: 'Your response will always a single JSON object. The following top-level properties must exist with a string provided as the value of each: summary, cause, impact, resolution, duration, timeline.' },
-        { role: 'system', content: 'Each of the provided property names are self-explanatory as to what information should be included as the value. Don\'t just provided the requested information in a concise sentence. Your responses should be as detailed as possible. The timeline property should include a timestamp for each major event. Add \n for newlines between each event for better readability.' },
+        { role: 'system', content: 'Each of the provided property names are self-explanatory as to what information should be included as the value. Don\'t just provided the requested information in a concise sentence. Your responses should be as detailed as possible. The timeline property should include a timestamp and description for each major event that took place. You must use the \n line feed character after each timeline event so that each event is on its own line for better readability.' },
         { role: 'user', content: context },
       ],
       model: 'gpt-4o',

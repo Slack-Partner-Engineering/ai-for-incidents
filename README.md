@@ -1,7 +1,5 @@
 # AI for Incidents
 
-*This app contains a feature that is in Beta! You must use the npm package `"@slack/bolt": "3.17.1-customFunctionBeta.0"`*
-
 #### Outline
 - [Overview](#overview)
 - [Setup](#setup)
@@ -26,15 +24,29 @@ This step expects an array of Slack messages describing an incident and includes
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy)
 
-Before getting started, first make sure you have a [development workspace](https://api.slack.com/developer-program) where you have permission to install apps. **Please note that the features in this project require that the workspace be part of [a Slack paid plan](https://slack.com/pricing).**
+Before getting started, first make sure you have a [developer workspace](https://api.slack.com/developer-program) where you have permission to install apps. **Please note that the features in this project require that the workspace be part of [a Slack paid plan](https://slack.com/pricing).**
 
-1. Clone this repository to your local development environment and run `npm install`.
-2. Create a new app from api.slack.com/apps using the included `manifest.json` file.
-3. Ensure your app has opted into the [Org-wide apps](https://api.slack.com/enterprise/org-wide-apps) feature.
-4. Install the app. If you are building in an Enterprise Grid, you [must install at the org-level](https://api.slack.com/automation/functions/custom-bolt#org-wide-apps). If you are building on a standalone workspace, this does not apply.
-5. Create a copy of `.env.sample`, rename to `.env` and provide the required values: an OpenAI API key and two tokens from your newly created app.
-6. Run your app locally or deploy to a hosting platform of your choice such as [Heroku](https://slack.dev/bolt-js/deployments/heroku).
-7. Open [Workflow Builder](https://slack.com/help/articles/17542172840595-Build-a-workflow--Create-a-workflow-in-Slack) and create a new workflow that includes one or both of the provided functions. They will appear in the **Custom** section of the steps list for all users that have been [granted access](https://api.slack.com/automation/functions/custom#access).
+### Clone the Template
+
+Start by cloning this repository:
+
+```zsh
+# Clone this project onto your machine
+$ slack create ai-for-incidents -t Slack-Partner-Engineering/ai-for-incidents
+
+# Change into the project directory
+$ cd ai-for-incidents
+
+# Install dependencies
+$ npm install
+```
+
+1. Create a new app from api.slack.com/apps using the included `manifest.json` file.
+2. Ensure your app has opted into the [Org-wide apps](https://api.slack.com/enterprise/org-wide-apps) feature.
+3. Install the app. If you are building in an Enterprise Grid, you [must install at the org-level](https://api.slack.com/automation/functions/custom-bolt#org-wide-apps). If you are building on a standalone workspace, this does not apply.
+4. Create a copy of `.env.sample`, rename to `.env` and provide the required values: an OpenAI API key and three tokens from your newly created app.
+5. Run your app locally with the `npm start` command or deploy to a hosting platform of your choice such as [Heroku](https://slack.dev/bolt-js/deployments/heroku).
+6. Open [Workflow Builder](https://slack.com/help/articles/17542172840595-Build-a-workflow--Create-a-workflow-in-Slack) and create a new workflow that includes one or both of the provided functions. They will appear in the **Custom** section of the steps list for all users that have been [granted access](https://api.slack.com/automation/functions/custom#access).
 
 ## Using functions in Workflow Builder
 With your server running, your function is now ready for use in [Workflow Builder](https://slack.com/help/articles/17542172840595-Build-a-workflow--Create-a-workflow-in-Slack)! They will appear in the **Custom** section of the steps list for all users that have been [granted access](https://api.slack.com/automation/functions/custom#access).

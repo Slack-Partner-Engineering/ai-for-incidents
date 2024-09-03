@@ -20,7 +20,7 @@
     "functions"
   ],
   "dependencies": {
-    "@slack/bolt": "3.17.1-customFunctionBeta.0",
+    "@slack/bolt": "^3.21.1",
     "dotenv": "^16.4.5",
     "openai": "^4.49.0"
   },
